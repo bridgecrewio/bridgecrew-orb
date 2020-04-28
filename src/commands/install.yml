@@ -1,0 +1,7 @@
+description: |
+  Install bridgecrew python package
+
+steps:
+  - run:
+      name: Install Bridgecrew
+      command: pip install -U bridgecrew

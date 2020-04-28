@@ -1,0 +1,33 @@
+description: |
+  This job will install bridgecrew and run it
+executor: default
+parameters:
+  directory:
+    description: "IaC root directory"
+    type: string
+    default: "none"
+  file:
+    description: "IaC file"
+    type: string
+    default: "none"
+  output:
+    description: "Report output format"
+    type: enum
+    enum: ["json", "cli", "junitxml"]
+    default: "cli"
+  soft-fail:
+    description: "Runs checks but suppresses error code"
+    type: boolean
+    default: false
+  api-key:
+    description: "API key to access bridgecrew"
+    type: string
+    default: "none"
+steps:
+  - install
+  - scan:
+      directory: <<parameters.directory>>
+      file: <<parameters.file>>
+      output: <<parameters.output>>
+      soft-fail: <<parameters.soft-fail>>
+      api-key: <<parameters.api-key>>

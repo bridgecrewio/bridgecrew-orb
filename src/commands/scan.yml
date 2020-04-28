@@ -1,0 +1,55 @@
+description: |
+  Run Bridgecrew scan
+parameters:
+  directory:
+    description: "IaC root directory"
+    type: string
+    default: "none"
+  file:
+    description: "IaC file"
+    type: string
+    default: "none"
+  output:
+    description: "Report output format"
+    type: enum
+    enum: ["json", "cli", "junitxml"]
+    default: "cli"
+  soft-fail:
+    description: "Runs checks but suppresses error code"
+    type: boolean
+    default: false
+  api-key:
+    description: "API key to access bridgecrew"
+    type: string
+    default: "none"
+steps:
+  - run:
+      name: Scan
+      command: |
+        NONE=none
+        SUPPRESS=<<parameters.soft-fail>>
+        OUTPUT=<<parameters.output>>
+        DIRECTORY=<<parameters.directory>>
+        FILE=<<parameters.file>>
+        API_KEY=<<parameters.api-key>>
+        CMD_STR="bridgecrew -o $OUTPUT "
+        if [[ $FILE == $NONE ]] && [[ $DIRECTORY == $NONE ]]; then
+          echo "file or directory must be provided"
+          exit 1
+        elif [[ $FILE != $NONE ]] && [[ $DIRECTORY != $NONE ]]; then
+          echo "cannot provide file and directory, chose only one"
+          exit 1
+        fi
+        if [ $SUPPRESS == true ]; then
+          CMD_STR=$CMD_STR"-s "
+        fi
+        if [ $FILE != $NONE ]; then
+          CMD_STR=$CMD_STR"-f $FILE "
+        fi
+        if [ $DIRECTORY != $NONE ]; then
+          CMD_STR=$CMD_STR"-d $DIRECTORY "
+        fi
+        if [ $API_KEY != $NONE ]; then
+          CMD_STR=$CMD_STR"-api-key $API_KEY "
+        fi
+        echo $CMD_STR | sh
