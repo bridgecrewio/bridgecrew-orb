@@ -11,10 +11,11 @@ parameters:
     default: "dev:alpha"
 jobs:
   integration-test-1:
-    executor: orb-tools/ubuntu
+    executor: bridgecrew/default
     steps:
       - checkout
-    # - your-orb/your-orb-command
+      - bridgecrew/install
+      - bridgecrew/scan
 workflows:
   lint_pack-validate_publish-dev:
     unless: << pipeline.parameters.run-integration-tests >>
