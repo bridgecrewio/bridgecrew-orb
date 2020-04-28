@@ -22,6 +22,14 @@ parameters:
     description: "API key to access bridgecrew"
     type: string
     default: "none"
+  repo-id:
+    description: "Repository to scan"
+    type: string
+    default: "none"
+  branch:
+    description: "Branch to scan"
+    type: string
+    default: "master"
 steps:
   - run:
       name: Scan
@@ -32,6 +40,8 @@ steps:
         DIRECTORY=<<parameters.directory>>
         FILE=<<parameters.file>>
         API_KEY=<<parameters.api-key>>
+        REPO=<<parameters.repo-id>>
+        BRANCH=<<parameters.branch>>
         CMD_STR="bridgecrew -o $OUTPUT "
         if [[ $FILE == $NONE ]] && [[ $DIRECTORY == $NONE ]]; then
           echo "file or directory must be provided"
@@ -49,7 +59,14 @@ steps:
         if [ $DIRECTORY != $NONE ]; then
           CMD_STR=$CMD_STR"-d $DIRECTORY "
         fi
+        if [ $BRANCH != "master" ]; then
+          CMD_STR=$CMD_STR"--branch $BRANCH "
+        fi
         if [ $API_KEY != $NONE ]; then
-          CMD_STR=$CMD_STR"-api-key $API_KEY "
+          if [ $REPO == $NON ]; then
+            echo 'repository is mandatory in order to use bc-api-key'
+            exit 1
+          fi
+          CMD_STR=$CMD_STR"--bc-api-key $API_KEY --repo-id $REPO"
         fi
         echo $CMD_STR | sh
