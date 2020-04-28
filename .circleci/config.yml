@@ -15,7 +15,8 @@ jobs:
     steps:
       - checkout
       - bridgecrew/install
-      - bridgecrew/scan
+      - bridgecrew/scan:
+          directory: "."
 workflows:
   lint_pack-validate_publish-dev:
     unless: << pipeline.parameters.run-integration-tests >>
