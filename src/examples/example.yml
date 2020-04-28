@@ -12,4 +12,5 @@ usage:
             directory: "."
             soft-fail: true
             output: "json"
+            repo-id: "bridgecrewio/platform"
             api-key: "6bridgecrew-9example-2api-key1-demo9"
