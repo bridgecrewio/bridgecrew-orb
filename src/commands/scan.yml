@@ -64,7 +64,7 @@ steps:
 #          CMD_STR=$CMD_STR"--branch $BRANCH "
 #        fi
 #        if [ $API_KEY != $NONE ]; then
-#          if [ $REPO == $NON ]; then
+#          if [ $REPO == $NONE ]; then
 #            echo 'repository is mandatory in order to use bc-api-key'
 #            exit 1
 #          fi
