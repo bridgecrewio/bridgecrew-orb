@@ -59,6 +59,7 @@ steps:
         if [ $DIRECTORY != $NONE ]; then
           CMD_STR=$CMD_STR"-d $DIRECTORY "
         fi
+        echo $CMD_STR | sh
 #        if [ $BRANCH != "master" ]; then
 #          CMD_STR=$CMD_STR"--branch $BRANCH "
 #        fi
@@ -69,4 +70,3 @@ steps:
 #          fi
 #          CMD_STR=$CMD_STR"--bc-api-key $API_KEY --repo-id $REPO"
 #        fi
-        echo $CMD_STR | sh
