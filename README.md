@@ -3,7 +3,10 @@
 ## The Bridgecrew Orb
 
 Use the Bridgecrew orb to scan for infrastrcture-as-code errors in your CircleCI Workflows.
-By utilizing this orb in your project workflow, you can automatically start to find, fix and monitor your project for configuration errors in Terraform and CloudFormation. By signing up for a free Bridgecrew Community plan you can also view dashboards and reports. The community plan does not limit the number of scans or users you can invite to view the results.
+By utilizing this orb in your project workflow, you can automatically start to find,
+fix and monitor your project for configuration errors in Terraform and CloudFormation. 
+By signing up for a free Bridgecrew Community plan you can also view dashboards and reports. 
+The community plan does not limit the number of scans or users you can invite to view the results.
 ​
 ## How to use the Bridgecrew Orb
 

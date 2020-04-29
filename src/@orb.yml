@@ -1,6 +1,7 @@
 version: 2.1
 description: |
-  Use bridgecrew to find, fix and monitor known misconfigs in Terraform, Cloudformation and other infrastucture as code frameworks . To use this orb you need to have a registered account with bridgecrew.io and and API token.
+  Use Bridgecrew to automatically find, fix, and monitor known misconfigs in Terraform, Cloudformation, and other infrastructure-as-code frameworks.
+  To use this orb, sign up for a free account at bridgecrew.io.
 display:
   home_url: "https://www.bridgecrew.io/"
   source_url: "https://github.com/bridgecrewio/bridgecrew-orb"
