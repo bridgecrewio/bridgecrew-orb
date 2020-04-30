@@ -18,6 +18,7 @@ jobs:
       - bridgecrew/scan:
           directory: "."
           api-key: "6bridgecrew-9example-2api-key1-demo9"
+          branch: "kisikisi"
 
 workflows:
   lint_pack-validate_publish-dev:
