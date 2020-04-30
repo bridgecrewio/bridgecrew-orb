@@ -23,11 +23,6 @@ parameters:
     description: "API key to access bridgecrew"
     type: string
     default: "none"
-  branch:
-    description: "Branch to scan"
-    type: string
-    default: "master"
-
 steps:
   - install
   - scan:

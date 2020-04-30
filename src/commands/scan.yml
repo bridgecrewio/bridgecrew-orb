@@ -22,10 +22,6 @@ parameters:
     description: "API key to access bridgecrew"
     type: string
     default: "none"
-  branch:
-    description: "Branch to scan"
-    type: string
-    default: "none"
 steps:
   - run:
       name: Scan
@@ -38,11 +34,8 @@ steps:
         API_KEY=<<parameters.api-key>>
         REPO_URL=`git ls-remote --get-url`
         REPO=`echo $REPO_URL | awk -F"[:.]" '{print $3}'`
-        BRANCH=<<parameters.branch>>
-        if [ $BRANCH == $NONE ]; then
-          BRANCH=`git rev-parse --abbrev-ref HEAD`
-        fi
-        CMD_STR="bridgecrew -o $OUTPUT"
+        BRANCH=`git rev-parse --abbrev-ref HEAD`
+        CMD_STR="bridgecrew -o $OUTPUT --branch $BRANCH"
         if [[ $FILE == $NONE ]] && [[ $DIRECTORY == $NONE ]]; then
           echo "file or directory must be provided"
           exit 1
@@ -59,9 +52,8 @@ steps:
         if [ $DIRECTORY != $NONE ]; then
           CMD_STR="$CMD_STR -d $DIRECTORY"
         fi
+        if [ $API_KEY != $NONE ]; then
+          CMD_STR="$CMD_STR --bc-api-key $API_KEY --repo-id $REPO"
+        fi
         echo "running bridgecrew with command $CMD_STR"
         echo $CMD_STR | sh
-#        CMD_STR="bridgecrew -o $OUTPUT --branch $BRANCH"  uncomment and put in right place when checkov support new flags
-#        if [ $API_KEY != $NONE ]; then
-#          CMD_STR="$CMD_STR --bc-api-key $API_KEY --repo-id $REPO"
-#        fi

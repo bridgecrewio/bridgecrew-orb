@@ -86,7 +86,6 @@ Full reference docs https://circleci.com/orbs/registry/orb/bridgecrew/bridgecrew
 | Parameter  | Description | Required | Default | Type |
 | -----------| -------------------------------------------------------------------------------------------------------- | ------------- | ------------- | ------------- |
 | api-token | API token from Bridgecrew app | no | "none" | string |
-| branch | Branch within the repository for bridgecrew to scan | no | "master" | string |
 | directory | IaC root directory to scan | no | "none" | string |
 | file | IaC file to scan | no | "none" | string |
 | soft-fail | Runs checks but suppresses error code | no | false | boolean |
