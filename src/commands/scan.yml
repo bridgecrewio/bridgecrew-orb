@@ -36,10 +36,13 @@ steps:
         DIRECTORY=<<parameters.directory>>
         FILE=<<parameters.file>>
         API_KEY=<<parameters.api-key>>
-        BRANCH=<<parameters.branch>>
         REPO_URL=`git ls-remote --get-url`
         REPO=`echo $REPO_URL | awk -F"[:.]" '{print $3}'`
-        CMD_STR="bridgecrew -o $OUTPUT"
+        BRANCH=<<parameters.branch>>
+        if [ $BRANCH == $NONE ]; then
+          BRANCH=`git rev-parse --abbrev-ref HEAD`
+        fi
+        CMD_STR="bridgecrew -o $OUTPUT --branch $BRANCH"
         if [[ $FILE == $NONE ]] && [[ $DIRECTORY == $NONE ]]; then
           echo "file or directory must be provided"
           exit 1
@@ -55,10 +58,6 @@ steps:
         fi
         if [ $DIRECTORY != $NONE ]; then
           CMD_STR="$CMD_STR -d $DIRECTORY"
-        fi
-        if [ $BRANCH == $NONE ]; then
-          BRANCH=`git rev-parse --abbrev-ref HEAD`
-          CMD_STR="$CMD_STR --branch $BRANCH"
         fi
         if [ $API_KEY != $NONE ]; then
           CMD_STR="$CMD_STR --bc-api-key $API_KEY --repo-id $REPO"
