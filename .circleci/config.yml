@@ -17,7 +17,7 @@ jobs:
       - bridgecrew/install
       - bridgecrew/scan:
           directory: "."
-          api-key: "6bridgecrew-9example-2api-key1-demo9"
+          output: "json"
 workflows:
   lint_pack-validate_publish-dev:
     unless: << pipeline.parameters.run-integration-tests >>
