@@ -13,4 +13,3 @@ usage:
             soft-fail: true
             output: "json"
             api-key: "6bridgecrew-9example-2api-key1-demo9"
-            repo-id: "bridgecrewio/terragoat"

@@ -22,14 +22,10 @@ parameters:
     description: "API key to access bridgecrew"
     type: string
     default: "none"
-  repo-id:
-    description: "Repository to scan"
-    type: string
-    default: "none"
   branch:
     description: "Branch to scan"
     type: string
-    default: "master"
+    default: "none"
 steps:
   - run:
       name: Scan
@@ -40,9 +36,10 @@ steps:
         DIRECTORY=<<parameters.directory>>
         FILE=<<parameters.file>>
         API_KEY=<<parameters.api-key>>
-        REPO=<<parameters.repo-id>>
         BRANCH=<<parameters.branch>>
-        CMD_STR="bridgecrew -o $OUTPUT "
+        REPO_URL=`git ls-remote --get-url`
+        REPO=echo $REPO_URL | awk -F"[:.]" '{print $3}'
+        CMD_STR="bridgecrew -o $OUTPUT"
         if [[ $FILE == $NONE ]] && [[ $DIRECTORY == $NONE ]]; then
           echo "file or directory must be provided"
           exit 1
@@ -51,22 +48,20 @@ steps:
           exit 1
         fi
         if [ $SUPPRESS == true ]; then
-          CMD_STR=$CMD_STR"-s "
+          CMD_STR="$CMD_STR -s"
         fi
         if [ $FILE != $NONE ]; then
-          CMD_STR=$CMD_STR"-f $FILE "
+          CMD_STR="$CMD_STR -f $FILE"
         fi
         if [ $DIRECTORY != $NONE ]; then
-          CMD_STR=$CMD_STR"-d $DIRECTORY "
+          CMD_STR="$CMD_STR -d $DIRECTORY"
         fi
+        echo "running bridgecrew with command $CMD_STR"
         echo $CMD_STR | sh
-#        if [ $BRANCH != "master" ]; then
-#          CMD_STR=$CMD_STR"--branch $BRANCH "
+#        if [ $BRANCH == $NONE ]; then
+#          BRANCH=`git rev-parse --abbrev-ref HEAD`
+#          CMD_STR="$CMD_STR --branch $BRANCH"
 #        fi
 #        if [ $API_KEY != $NONE ]; then
-#          if [ $REPO == $NONE ]; then
-#            echo 'repository is mandatory in order to use bc-api-key'
-#            exit 1
-#          fi
-#          CMD_STR=$CMD_STR"--bc-api-key $API_KEY --repo-id $REPO"
+#          CMD_STR="$CMD_STR --bc-api-key $API_KEY --repo-id $REPO"
 #        fi

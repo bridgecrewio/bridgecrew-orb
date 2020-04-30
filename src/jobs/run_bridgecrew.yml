@@ -23,10 +23,6 @@ parameters:
     description: "API key to access bridgecrew"
     type: string
     default: "none"
-  repo-id:
-    description: "Repository to scan"
-    type: string
-    default: "none"
   branch:
     description: "Branch to scan"
     type: string
@@ -40,5 +36,4 @@ steps:
       output: <<parameters.output>>
       soft-fail: <<parameters.soft-fail>>
       api-key: <<parameters.api-key>>
-      repo-id: <<parameters.repo-id>>
       branch: <<parameters.branch>>

@@ -19,7 +19,6 @@ jobs:
           directory: "."
           branch: "develop"
           api-key: "6bridgecrew-9example-2api-key1-demo9"
-          repo-id: "bridgecrewio/platform"
 workflows:
   lint_pack-validate_publish-dev:
     unless: << pipeline.parameters.run-integration-tests >>
