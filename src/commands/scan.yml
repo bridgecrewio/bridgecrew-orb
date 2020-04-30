@@ -42,7 +42,6 @@ steps:
         if [ $BRANCH == $NONE ]; then
           BRANCH=`git rev-parse --abbrev-ref HEAD`
         fi
-#        CMD_STR="bridgecrew -o $OUTPUT --branch $BRANCH"  uncomment when checkov support new flags
         CMD_STR="bridgecrew -o $OUTPUT"
         if [[ $FILE == $NONE ]] && [[ $DIRECTORY == $NONE ]]; then
           echo "file or directory must be provided"
@@ -62,6 +61,7 @@ steps:
         fi
         echo "running bridgecrew with command $CMD_STR"
         echo $CMD_STR | sh
+#        CMD_STR="bridgecrew -o $OUTPUT --branch $BRANCH"  uncomment and put in right place when checkov support new flags
 #        if [ $API_KEY != $NONE ]; then
 #          CMD_STR="$CMD_STR --bc-api-key $API_KEY --repo-id $REPO"
 #        fi
