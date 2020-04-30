@@ -31,4 +31,3 @@ steps:
       output: <<parameters.output>>
       soft-fail: <<parameters.soft-fail>>
       api-key: <<parameters.api-key>>
-      branch: <<parameters.branch>>
