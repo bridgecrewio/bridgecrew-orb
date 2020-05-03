@@ -3,7 +3,7 @@ description: |
 usage:
   version: 2.1
   orbs:
-    bridgecrew: bridgecrew/bridgecrew@0.0.5
+    bridgecrew: bridgecrew/bridgecrew@1.0.0
   jobs:
     build:
       machine: true
