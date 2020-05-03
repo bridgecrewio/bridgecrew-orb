@@ -22,7 +22,7 @@ parameters:
   api-key-variable:
     description: "API key to access bridgecrew"
     type: string
-    default: "none"
+    default: BC_API_KEY
 steps:
   - install
   - scan:
@@ -30,4 +30,4 @@ steps:
       file: <<parameters.file>>
       output: <<parameters.output>>
       soft-fail: <<parameters.soft-fail>>
-      api-key: <<parameters.api-key-variable>>
+      api-key-variable: <<parameters.api-key-variable>>
