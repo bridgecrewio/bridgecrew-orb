@@ -19,7 +19,7 @@ parameters:
     description: "Runs checks but suppresses error code"
     type: boolean
     default: false
-  api-key:
+  api-key-variable:
     description: "API key to access bridgecrew"
     type: string
     default: "none"
@@ -30,4 +30,4 @@ steps:
       file: <<parameters.file>>
       output: <<parameters.output>>
       soft-fail: <<parameters.soft-fail>>
-      api-key: <<parameters.api-key>>
+      api-key: <<parameters.api-key-variable>>

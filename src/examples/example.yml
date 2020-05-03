@@ -12,4 +12,4 @@ usage:
             directory: "./terraform"
             soft-fail: true
             output: "json"
-            api-key: $API_KEY
+            api-key-variable: BC_API_KEY

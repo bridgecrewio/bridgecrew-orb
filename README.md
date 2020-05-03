@@ -37,7 +37,7 @@ version: 2.1
             directory: './terraform'
             soft-fail: true
             output: "junitxml"
-            api-key: "6bridgecrew-9example-2api-key1-demo9"
+            api-key-variable: BC_API_KEY
 ```
 
 ### Scan IaC Files
@@ -56,7 +56,7 @@ jobs:
       - bridgecrew/scan:
           file: "./terraform/db-app.tf"
           output: "json"
-          api-key: "6bridgecrew-9example-2api-key1-demo9"
+          api-key-variable: BC_API_KEY
 ```
 
 ### Advanced Example
@@ -73,10 +73,10 @@ build:
     steps:
     - checkout
     - bridgecrew/scan:
-        directory: "./terragoat"                          # tell bridgecrew where is the directory you want to scan
-        soft-fail: true                                   # do not fail the workflow in case vulnerabilities have found 
-        output: "cli"                                     # Report output format one of cli, json, junitxml
-        api-key: "6bridgecrew-9example-2api-key1-demo9"   # use bridgecrew api key to create violations in bridgecrew app
+        directory: "./terragoat"         # tell bridgecrew where is the directory you want to scan
+        soft-fail: true                  # do not fail the workflow in case vulnerabilities have found 
+        output: "cli"                    # Report output format one of cli, json, junitxml
+        api-key-variable: BC_API_KEY     # use bridgecrew api key to create violations in bridgecrew app
 ```
 
 ## Orb Parameters
@@ -85,7 +85,7 @@ Full reference docs https://circleci.com/orbs/registry/orb/bridgecrew/bridgecrew
 
 | Parameter  | Description | Required | Default | Type |
 | -----------| -------------------------------------------------------------------------------------------------------- | ------------- | ------------- | ------------- |
-| api-key | API key from Bridgecrew app | no | "none" | string |
+| api-key-variable | Environment variable name of the Bridgecrew API key from Bridgecrew app | no | BC_API_KEY | string |
 | directory | IaC root directory to scan | no | "none" | string |
 | file | IaC file to scan | no | "none" | string |
 | soft-fail | Runs checks but suppresses error code | no | false | boolean |
