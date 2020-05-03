@@ -22,7 +22,7 @@ parameters:
   api-key:
     description: "API key to access bridgecrew"
     type: env_var_name
-    default: $API_KEY
+    default: API_KEY
 steps:
   - install
   - scan:
@@ -30,4 +30,4 @@ steps:
       file: <<parameters.file>>
       output: <<parameters.output>>
       soft-fail: <<parameters.soft-fail>>
-      api-key: ${<<parameters.api-key>>}
+      api-key: $<<parameters.api-key>>
