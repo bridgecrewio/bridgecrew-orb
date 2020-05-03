@@ -30,4 +30,4 @@ steps:
       file: <<parameters.file>>
       output: <<parameters.output>>
       soft-fail: <<parameters.soft-fail>>
-      api-key: <<parameters.$api-key>>
+      api-key: ${<<parameters.api-key>>}
