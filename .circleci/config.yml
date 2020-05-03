@@ -18,7 +18,7 @@ jobs:
       - bridgecrew/scan:
           directory: "."
           output: "json"
-          api-key: "none"
+          api-key-variable: "none"
 workflows:
   lint_pack-validate_publish-dev:
     unless: << pipeline.parameters.run-integration-tests >>
