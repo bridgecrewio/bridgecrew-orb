@@ -88,7 +88,7 @@ Full reference docs https://circleci.com/orbs/registry/orb/bridgecrew/bridgecrew
 | api-key-variable | Environment variable name of the Bridgecrew API key from Bridgecrew app | no | BC_API_KEY | string |
 | directory | IaC root directory to scan | no | "none" | string |
 | file | IaC file to scan | no | "none" | string |
-| soft-fail | Runs checks but suppresses error code | no | false | boolean |
+| soft-fail | Runs checks without failing build | no | false | boolean |
 | output | Report output format | no | "cli" | cli \ json \ junitxml |
 
 ## Screenshots

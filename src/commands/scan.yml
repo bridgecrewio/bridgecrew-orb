@@ -15,7 +15,7 @@ parameters:
     enum: ["json", "cli", "junitxml"]
     default: "cli"
   soft-fail:
-    description: "Runs checks but suppresses error code"
+    description: "Runs checks without failing build"
     type: boolean
     default: false
   api-key-variable:
