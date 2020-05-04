@@ -85,7 +85,7 @@ Full reference docs https://circleci.com/orbs/registry/orb/bridgecrew/bridgecrew
 
 | Parameter  | Description | Required | Default | Type |
 | -----------| -------------------------------------------------------------------------------------------------------- | ------------- | ------------- | ------------- |
-| api-key-variable | Environment variable name of the Bridgecrew API key from Bridgecrew app | no | BC_API_KEY | string |
+| api-key-variable | Environment variable name of the Bridgecrew API key from Bridgecrew app | no | BC_API_KEY | env_var_name |
 | directory | IaC root directory to scan | no | "none" | string |
 | file | IaC file to scan | no | "none" | string |
 | soft-fail | Runs checks without failing build | no | false | boolean |
