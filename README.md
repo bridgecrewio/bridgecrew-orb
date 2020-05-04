@@ -92,4 +92,5 @@ Full reference docs https://circleci.com/orbs/registry/orb/bridgecrew/bridgecrew
 | output | Report output format | no | "cli" | cli \ json \ junitxml |
 
 ## Screenshots
-
+Run bridgecrew orb in your CircleCI workflow
+![scan-screenshot](https://raw.githubusercontent.com/bridgecrewio/bridgecrew-orb/master/screenshot.gif)
