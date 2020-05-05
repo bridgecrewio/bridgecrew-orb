@@ -21,7 +21,7 @@ parameters:
     default: false
   api-key-variable:
     description: "API key to access bridgecrew"
-    type: string
+    type: env_var_name
     default: BC_API_KEY
 steps:
   - install
