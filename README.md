@@ -34,9 +34,8 @@ version: 2.1
       steps:
         - checkout
         - bridgecrew/scan:
-            directory: './terraform'
+            directory: '.'
             soft-fail: true
-            output: "junitxml"
             api-key-variable: BC_API_KEY
 ```
 
@@ -55,7 +54,6 @@ jobs:
       - checkout
       - bridgecrew/scan:
           file: "./terraform/db-app.tf"
-          output: "json"
           api-key-variable: BC_API_KEY
 ```
 
@@ -75,7 +73,6 @@ build:
     - bridgecrew/scan:
         directory: "./terragoat"         # tell bridgecrew where is the directory you want to scan
         soft-fail: true                  # do not fail the workflow in case vulnerabilities have found 
-        output: "cli"                    # Report output format one of cli, json, junitxml
         api-key-variable: BC_API_KEY     # use bridgecrew api key to create violations in bridgecrew app
 ```
 
