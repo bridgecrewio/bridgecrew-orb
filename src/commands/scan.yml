@@ -26,6 +26,7 @@ steps:
   - run:
       name: Scan
       command: |
+        export BC_SOURCE=circleci
         NONE=none
         SUPPRESS=<<parameters.soft-fail>>
         OUTPUT=<<parameters.output>>
