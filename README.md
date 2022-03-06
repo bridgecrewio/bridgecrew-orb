@@ -16,7 +16,7 @@ All you need to do is:
 1. Follow the instructions at the [Orb Quick Start Guide](https://circleci.com/orbs/registry/orb/bridgecrew/bridgecrew#quick-start) to enable usage of Orbs in your project workflow.
 2. Set up an environment variable with your Bridgecrew API key, which you can get from your [Bridgecrew account](https://www.bridgecrew.cloud/integrations).
 3. In the app build job, call the `bridgecrew/scan`
-4. Optionally, supply parameters to customize orb behaviour
+4. Optionally, supply parameters to customize orb behavior
 
 ## Usage Examples
 
