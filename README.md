@@ -20,6 +20,7 @@ All you need to do is:
 
 ## Usage Examples
 
+
 ### Scan IaC Directory
 
 ```yaml
