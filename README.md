@@ -2,7 +2,7 @@
 
 ## The Bridgecrew Orb
 
-Use the Bridgecrew orb to scan for infrastrcture-as-code errors in your CircleCI Workflows.
+Use the Bridgecrew orb to scan for infrastructure-as-code errors in your CircleCI Workflows.
 By utilizing this orb in your project workflow, you can automatically start to find,
 fix and monitor your project for configuration errors in Terraform and CloudFormation. 
 By signing up for a free Bridgecrew Community plan you can also view dashboards and reports. 
@@ -19,7 +19,6 @@ All you need to do is:
 4. Optionally, supply parameters to customize orb behaviour
 
 ## Usage Examples
-
 
 ### Scan IaC Directory
 
@@ -38,6 +37,7 @@ version: 2.1
             directory: '.'
             soft-fail: true
             api-key-variable: BC_API_KEY
+            prisma-api-url: PRISMA_API_URL
 ```
 
 ### Scan IaC Files
@@ -56,6 +56,7 @@ jobs:
       - bridgecrew/scan:
           file: "./terraform/db-app.tf"
           api-key-variable: BC_API_KEY
+          prisma-api-url: PRISMA_API_URL
 ```
 
 ### Advanced Example
@@ -72,22 +73,24 @@ build:
     steps:
     - checkout
     - bridgecrew/scan:
-        directory: "./terragoat"         # tell bridgecrew where is the directory you want to scan
-        soft-fail: true                  # do not fail the workflow in case vulnerabilities have found 
-        api-key-variable: BC_API_KEY     # use bridgecrew api key to create violations in bridgecrew app
+        directory: "./terragoat"                # tell bridgecrew where is the directory you want to scan
+        soft-fail: true                         # do not fail the workflow in case vulnerabilities have found 
+        api-key-variable: BC_API_KEY            # bridgecrew API key or prisma cloud access key (see PRISMA_API_URL)
+        prisma-api-url: PRISMA_API_URL # prisma cloud API URL (see: https://prisma.pan.dev/api/cloud/api-urls). Requires BC_API_KEY to be a prisma cloud access key in the following format: <access_key_id>::<secret_key>
 ```
 
 ## Orb Parameters
 
 Full reference docs https://circleci.com/orbs/registry/orb/bridgecrew/bridgecrew
 
-| Parameter  | Description | Required | Default | Type |
-| -----------| -------------------------------------------------------------------------------------------------------- | ------------- | ------------- | ------------- |
-| api-key-variable | Environment variable name of the Bridgecrew API key from Bridgecrew app | no | BC_API_KEY | env_var_name |
-| directory | IaC root directory to scan | no | "none" | string |
-| file | IaC file to scan | no | "none" | string |
-| soft-fail | Runs checks without failing build | no | false | boolean |
-| output | Report output format | no | "cli" | cli \ json \ junitxml |
+| Parameter  | Description                                                          | Required | Default | Type                  |
+| -----------|----------------------------------------------------------------------| ------------- | ------------- |-----------------------|
+| api-key-variable | Environment variable name for the Bridgecrew API key from Bridgecrew app | no | BC_API_KEY | env_var_name          |
+| prisma-api-url | Prisma Cloud API URL                   | no | PRISMA_API_URL | string                |
+| directory | IaC root directory to scan                                           | no | "none" | string                |
+| file | IaC file to scan                                                     | no | "none" | string                |
+| soft-fail | Runs checks without failing build                                    | no | false | boolean               |
+| output | Report output format                                                 | no | "cli" | cli \ json \ junitxml |
 
 ## Screenshots
 Run bridgecrew orb in your CircleCI workflow

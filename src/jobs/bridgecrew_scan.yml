@@ -23,6 +23,10 @@ parameters:
     description: "API key to access bridgecrew"
     type: env_var_name
     default: BC_API_KEY
+  prisma-api-url:
+    description: "Prisma API url"
+    type: string
+    default: PRISMA_API_URL
 steps:
   - install
   - checkout
@@ -32,3 +36,4 @@ steps:
       output: <<parameters.output>>
       soft-fail: <<parameters.soft-fail>>
       api-key-variable: <<parameters.api-key-variable>>
+      prisma-api-url: <<parameters.prisma-api-url>>
