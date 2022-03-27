@@ -87,7 +87,7 @@ Full reference docs https://circleci.com/orbs/registry/orb/bridgecrew/bridgecrew
 | Parameter  | Description                                                          | Required | Default | Type                  |
 | -----------|----------------------------------------------------------------------| ------------- | ------------- |-----------------------|
 | api-key-variable | Environment variable name for the Bridgecrew API key from Bridgecrew app | no | BC_API_KEY | env_var_name          |
-| prisma-api-url | Prisma Cloud API URL                  | no | PRISMA_API_URL | string                |
+| prisma-api-url | Prisma Cloud API URL                  | no | "none" | string                |
 | directory | IaC root directory to scan                                           | no | "none" | string                |
 | file | IaC file to scan                                                     | no | "none" | string                |
 | soft-fail | Runs checks without failing build                                    | no | false | boolean               |
