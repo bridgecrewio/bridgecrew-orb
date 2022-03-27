@@ -17,6 +17,7 @@ All you need to do is:
 2. Set up an environment variable with your Bridgecrew API key, which you can get from your [Bridgecrew account](https://www.bridgecrew.cloud/integrations).
 3. In the app build job, call the `bridgecrew/scan`
 4. Optionally, supply parameters to customize orb behaviour
+5. Prisma members - set your prisma cloud API URL which you can get from [Prisma cloud API URLs](https://prisma.pan.dev/api/cloud/api-urls). Your environment variable (api-key-variable) requires to be a prisma cloud access key in the following format: <access_key_id>::<secret_key>
 
 ## Usage Examples
 
@@ -76,7 +77,7 @@ build:
         directory: "./terragoat"                # tell bridgecrew where is the directory you want to scan
         soft-fail: true                         # do not fail the workflow in case vulnerabilities have found 
         api-key-variable: BC_API_KEY            # bridgecrew API key or prisma cloud access key (see PRISMA_API_URL)
-        prisma-api-url: PRISMA_API_URL # prisma cloud API URL (see: https://prisma.pan.dev/api/cloud/api-urls). Requires BC_API_KEY to be a prisma cloud access key in the following format: <access_key_id>::<secret_key>
+        prisma-api-url: PRISMA_API_URL # prisma cloud API URL (see: https://prisma.pan.dev/api/cloud/api-urls). Requires api-key-variable to be a prisma cloud access key in the following format: <access_key_id>::<secret_key>
 ```
 
 ## Orb Parameters
@@ -86,7 +87,7 @@ Full reference docs https://circleci.com/orbs/registry/orb/bridgecrew/bridgecrew
 | Parameter  | Description                                                          | Required | Default | Type                  |
 | -----------|----------------------------------------------------------------------| ------------- | ------------- |-----------------------|
 | api-key-variable | Environment variable name for the Bridgecrew API key from Bridgecrew app | no | BC_API_KEY | env_var_name          |
-| prisma-api-url | Prisma Cloud API URL                   | no | PRISMA_API_URL | string                |
+| prisma-api-url | Prisma Cloud API URL                  | no | PRISMA_API_URL | string                |
 | directory | IaC root directory to scan                                           | no | "none" | string                |
 | file | IaC file to scan                                                     | no | "none" | string                |
 | soft-fail | Runs checks without failing build                                    | no | false | boolean               |
