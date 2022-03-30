@@ -26,7 +26,7 @@ parameters:
   prisma-api-url:
     description: "Prisma API url"
     type: string
-    default: PRISMA_API_URL
+    default: "none"
 steps:
   - install
   - checkout
